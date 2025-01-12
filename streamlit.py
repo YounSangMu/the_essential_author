@@ -37,7 +37,7 @@ st.markdown(
 )
 
 img = Image.open('image/main_image.png')
-st.image(img, width=300, caption='Image from Unsplash', use_column_width=True)
+st.image(img, width=300, caption='Image from Unsplash', use_container_width=True)
 
 
 #2. 서비스 & 취지 소개 
