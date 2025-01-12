@@ -428,7 +428,6 @@ if st.button('제출', type='primary') :
     df_scores = df_scores[["author_cd", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
 
     # 6️⃣ 총점 기준으로 내림차순 정렬
-    df_scores = df_scores.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
     df_total = pd.merge(author_db, df_scores, left_on='author_cd', right_on='author_cd', how='inner')
 
     df_scores = df_total[["author_nm", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
