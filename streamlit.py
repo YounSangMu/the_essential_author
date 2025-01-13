@@ -138,7 +138,7 @@ options_tendency_3 = {
 }
 
 tendency_3 = st.radio(
-'Q2-3. 오랜 친구와의 관계가 멀어졌습니다. 당신은 어떻게 할까요?',list(options_tendency_3.keys())
+'Q2-3. 오랜 친구와의 관계가 멀어졌습니다. 당신은 어떻게 하나요?',list(options_tendency_3.keys())
 )
 
 st.markdown('\n')
@@ -153,7 +153,7 @@ options_tendency_4 = {
 }
 
 tendency_4 = st.radio(
-'Q2-4. 세상을 마음대로 바꿀 수 있다면, 무엇을 하시겠습니까?', list(options_tendency_4.keys())
+'Q2-4. 세상을 마음대로 바꿀 수 있다면?', list(options_tendency_4.keys())
 )
 
 st.markdown('\n')
