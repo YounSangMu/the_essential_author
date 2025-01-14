@@ -7,7 +7,6 @@ import pandas as pd
 import streamlit as st 
 from PIL import Image
 
-
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
 author_list = list(author_db["author_cd"])
@@ -29,10 +28,9 @@ for index, row in author_db.iterrows() :
 
 
 #1. 디 에센셜 소개
-st.header("📚디 에센셜 작가 테스트")
+st.header("디 에센셜 작가 테스트")
 st.markdown(
 '''
-한 작가의 책을 여러 권 읽으면,
 디 에센셜 시리즈는 작가의 핵심 작품들을 큐레이팅하여
 한 권으로 엮은 스페셜 에디션입니다.
 '''
