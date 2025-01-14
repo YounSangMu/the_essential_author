@@ -2,4 +2,4 @@ pandas
 streamlit 
 Pillow
 gspread
-google-auth
+google.oauth2
