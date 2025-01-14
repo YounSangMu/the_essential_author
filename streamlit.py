@@ -453,7 +453,8 @@ if st.button('제출', type='primary') :
         real_df_total = real_df_total[real_df_total["author_cd"] != 'KSY']
 
     real_df_total = real_df_total.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
-    target_author = real_df_total.head(0)
+    st.dataframe(real_df_total)
+    target_author = real_df_total.head(1)
 
     st.header(f"{target_author['author_nm'].iloc[0]} 🎉")
     
