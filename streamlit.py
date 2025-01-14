@@ -6,35 +6,6 @@
 import pandas as pd 
 import streamlit as st 
 from PIL import Image
-import gspread
-from google.oauth2 import service_account
-
-# 🔑 API Key 대신 서비스 계정 정보 직접 입력
-SERVICE_ACCOUNT_INFO = {
-    "type": "service_account",
-    "project_id": "psyched-option-447811-b9",
-    "private_key_id": "ff8124b7b2d88783e34a150daf7e177bd04c1269",
-    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCntIAXqGeeCxAJ\nKyI8g8CHU8CVXApUO78zffBAqS+lw0MRqhy+PulOrRDickwu2ppeJXWQ7D+69a70\nM2CgsZFAOiFEEmGlkjKGA2De+rYYpmZ35BbPxCL+ghbOmAFBQictOAdrTAlJd3AK\ni34hQOMjFIdMuGSdGOeW6/+9ZaSZe9npMeWnF+tVHm4wDIM2HVB2Do+bGWz0UvBn\nMVRtwwt4RQNp2FxHH8jOb0drcJkCmcgkbwnpgH+QLqtmJsU89M24/tOCtb9fRjbl\nJwn9XeIUmndrLjX+5EknvxXHIzRomwIwNaI6MxXlk2are5LrpnqyohWjCltc2nI6\nSdvXRNmRAgMBAAECggEACgTHUY0pd4XAqlON2DX6FqY4ZJPa4seuTKSy6XdSAIyc\nNp4bg9AH/xUUDlB2taaF6fxB5uuo2QHxYZGqLZ9osStn2QRiGf0/EHDQ5NvvF0+Q\nN+Gul9s8nfNmlRFRTd/mWEC3IhVTnrRzGJDXHaRzN/bI0xqsRBL8pDBVbFqkooNB\n1xy6Oxcj13ZTg8ZHmflNBcvicRirmCFdGPkJmP/UGNwHgqX4iwZrwMKjfnhT9AsW\nZo1IVQNkulS53fUWvcLIeOsCK+wyy0+vKMKpLShTCvueZwufEVwrfbb3956CDllo\nENRT7j+KFX1I69Q/K85dmYcovSHULeRzmvjY95mhcwKBgQDqiQus+EHZE4m7LkEt\nucf/xtbbsa1NNi0H7OnnLK6DUAQLmrpfujEMbwKGnGC+yGu0EtNcA1MiLh90ZMW4\nSv2zezWIMFNdWeI3YlO8f2TMZRzQr+WLqPf9Raj3UpsXPyiRSrJM510QG8k7zU3r\nrCDHL12U0ze5C9tUJVzCz4fmhwKBgQC3Da5pFL/5nA3iWfAqaXQqw8FN9A0gWu0r\nkzytTFIWUUleKQ7N5bgepehtLA2zH56RrbIzo6c62uWroegM4PPDcC3PQUW6tOak\nijcIUyUFu5wH6xGwhBIOXJzm3ugZ4U5dLYshSBqJfz8bSZkHe6ouqi11bSZXZsME\nLsSVcV0tJwKBgGbwwfQoftZlkfVbRvZn7ZWhU5rX8IXMOpWY8c0qumoeS7hAMH9l\nvLOFYeltZ7U1SLif7q8bMnj1H485z+Kk35fQg12EQILfub+vY6t/iuF/m9co7SqQ\nflBnK9NqKXJZoVesHnhMsHcqive5k/LV+QkUDBIPZwzMXHchcwZ6il6vAoGBAJjR\nWyFuqTYBCbZFzzIZB1oMQnyJmcvBHO6b5LPoWz82bUGmlS1e8e7kIr3BYU6Avyhv\nEa36mcmQpNw8NjVKNzaZmCTGIShVjZcfrAHPJ8E5dnFF1Wa/WzOSLYqv3KR+a6Vu\nOBB42W6gRFbLgm2018ZNW9YEYVXl/DipsoPwOBFRAoGBAOiEXnOunAzB3LQQyUxH\nJmUpNclu2kJkpatZKinw1jCJ3zdpjBy4saxEv2kfe2ac0skxsM/TIndK9TxpQAGp\nHovqQOxer61G2joy4P/Wu3AoXcGdlJT0KgDO0TmRGEj0/1aLhKMhY4sWZ+y1+zxL\nHctQeg7nO8GMcK8fIbX90et7\n-----END PRIVATE KEY-----\n",
-    "client_email": "the-essential-author-426@psyched-option-447811-b9.iam.gserviceaccount.com",
-    "client_id": "115075698268482052614",
-    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
-    "token_uri": "https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
-    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/the-essential-author-426%40psyched-option-447811-b9.iam.gserviceaccount.com",
-    "universe_domain": "googleapis.com"
-}
-
-# 📂 인증 처리
-creds = service_account.Credentials.from_service_account_info(
-    SERVICE_ACCOUNT_INFO,
-    scopes=["https://www.googleapis.com/auth/spreadsheets"]
-)
-
-client = gspread.authorize(creds)
-
-# 📊 Google Sheets 열기
-spreadsheet = client.open("The Essentail Author")  # 구글 시트 이름
-sheet = spreadsheet.sheet1  # 첫 번째 시트
 
 
 #0. data summary
@@ -310,7 +281,6 @@ for emblem, author_cd in author_emblem_dict_1.items() :
 
 
 if st.button('제출', type='primary') : 
-    sheet.append_row(basic_1) 
     
 #    for i in (1, 10) : 
 #        options_tendency_{i}[tendency_{i}]
