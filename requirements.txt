@@ -1,3 +1,5 @@
 pandas
 streamlit 
 Pillow
+gspread
+google-auth
