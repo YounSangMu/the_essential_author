@@ -437,7 +437,7 @@ if st.button('제출', type='primary') :
     df_scores = df_scores.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
 
     real_df_total = df_total
-    st.dataframe(real_df_total)
+    st.write(basic_check)
 
     if basic_check[0] == "500" : 
         real_df_total = real_df_total[real_df_total["page"] <= 500]
