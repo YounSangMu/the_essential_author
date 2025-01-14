@@ -1,5 +1,3 @@
 pandas
 streamlit 
 Pillow
-gspread
-google.oauth2
