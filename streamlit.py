@@ -6,6 +6,25 @@
 import pandas as pd 
 import streamlit as st 
 from PIL import Image
+import gspread
+from google.oauth2.service_account import Credentials
+
+# 📂 Google Sheets 인증
+SCOPE = [
+    "https://spreadsheets.google.com/feeds",
+    "https://www.googleapis.com/auth/spreadsheets",
+    "https://www.googleapis.com/auth/drive"
+]
+
+# 📄 서비스 계정 키(JSON)
+creds = Credentials.from_service_account_file("credentials.json", scopes=SCOPE)
+client = gspread.authorize(creds)
+
+# 📊 Google Sheets 열기
+spreadsheet = client.open("The Essential Author Test")  # 구글 시트 이름
+sheet = spreadsheet.sheet1  # 첫 번째 시트 선택
+
+
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
@@ -280,6 +299,7 @@ for emblem, author_cd in author_emblem_dict_1.items() :
 
 
 if st.button('제출', type='primary') : 
+    sheet.append_row(basic_1) 
     
 #    for i in (1, 10) : 
 #        options_tendency_{i}[tendency_{i}]
