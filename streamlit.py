@@ -103,7 +103,7 @@ options_tendency_1 = {
     "세상에 전하는 메시지": "group_a",
     "독자가 느낄 감정": "group_b",
     "인생에 대한 깊이 있는 통찰": "group_c",
-    "솔직하고 자유로운 표현": "group_d"
+    "사랑과 상처가 교차하는 인간적인 서사": "group_d"
 }
 
 tendency_1 = st.radio(
