@@ -29,7 +29,7 @@ for index, row in author_db.iterrows() :
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
-st.subheader('"*좋아하는 작가를 만난다는 것*"')
+st.markdown('### "좋아하는 작가를 만난다는 것"')
 st.markdown(f"좋아하는 작가에게 빠져들었던 시간을 되돌아보면, 인생의 한 길목을 그 사람과 동행했던 것만 같아요.<br>", unsafe_allow_html=True)
 #디 에센셜 시리즈는 작가의 핵심 작품들을 큐레이팅하여
 #한 권으로 엮은 스페셜 에디션입니다.
