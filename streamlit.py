@@ -30,24 +30,15 @@ for index, row in author_db.iterrows() :
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
-st.markdown(f"좋아하는 작가에게 빠져든다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것만 같아요.<br>디 에센셜은 작가의 핵심 작품을 큐레이팅하여 한 권으로 엮은 책입니다. 누구보다 삶을 치열하게 고민하고, 섬세하게 느낀 작가를 만나 대화하는 시간이 되길 바라요.", unsafe_allow_html=True)
-#디 에센셜 시리즈는 작가의 핵심 작품들을 큐레이팅하여
-#한 권으로 엮은 스페셜 에디션입니다.
-#", unsafe_allow_html=True
-#)
+st.markdown(f"좋아하는 작가에게 빠져든다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것만 같아요.<br>작가의 핵심 작품을 엮은 한 권으로, 누구보다 인생을 섬세하게 느끼고, 치열하게 고민했던 작가와 대화하는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
 img = Image.open('image/main_image.png')
 st.image(img, width=300, caption='Image from Unsplash', use_container_width=True)
 
 
 #2. 서비스 & 취지 소개 
-st.subheader('*"좋아하는 작가가 있다는 것"*')
-st.markdown(
-'''
-한 사람을 잘 안다는 건 설레는 일이죠.
-좀 아는 작가, 좋아하는 작가 한 분을 모셔볼까요.
-'''
-)
+st.markdown("####테스트 제대로 활용하는 방법")
+st.markdown("나와 비슷한 취향의 작가를 만나는 것도 물론 좋지만, 내가 배우고 싶은 사람 또는 나와 반대되는 사람을 떠올리며 선택해 보세요. 더 많은 작가를 만나는 데에 도움이 될 겁니다.") 
 
 st.divider()
 
@@ -92,7 +83,7 @@ options_basic_3 = {
 }
 
 basic_3 = st.radio(
-'Q1-3. 시로 이뤄진 책도 괜찮나요?', list(options_basic_3.keys())
+'Q1-3. 시와 에세이로 이뤄진 책도 괜찮나요?', list(options_basic_3.keys())
 )
 
 st.markdown('\n')
