@@ -500,7 +500,7 @@ with col2:
             df = pd.DataFrame(columns=["이름", "의견"])  # 컬럼 생성
             df.to_csv(file_path, index=False)
 
-        new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
+        #new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
         
         # 📥 기존 CSV에 데이터 추가 (append)
         new_data.to_csv(file_path, mode='a', header=False, index=False)
