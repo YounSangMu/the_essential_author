@@ -269,9 +269,9 @@ for emblem, author_cd in author_emblem_dict_1.items() :
     author = f'{author_cd}_4'
     st.checkbox(f"{emblem}", key=author)
 
-col1, col2, col3 = st.columns([1, 1, 2])
+col1, col2 = st.columns([9, 1])
 
-with col3:
+with col2:
     if st.button('제출', type='primary') : 
         
     #    for i in (1, 10) : 
