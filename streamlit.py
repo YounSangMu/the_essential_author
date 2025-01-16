@@ -416,13 +416,13 @@ with col2:
             "명문장점수": [author_emblem_scores[author] for author in author_list] 
         })
     
-        # 5️⃣ 총점 컬럼 추가
+        # 총점 컬럼 추가
         df_scores["총점"] = df_scores["성향점수"] + df_scores["MBTI점수"] + df_scores["연애점수"] + df_scores["명문장점수"]
     
-        # 6️⃣ 컬럼 순서 변경 (총점을 Author 옆으로 이동)
+        # 컬럼 순서 변경 (총점을 Author 옆으로 이동)
         df_scores = df_scores[["author_cd", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
     
-        # 6️⃣ 총점 기준으로 내림차순 정렬
+        # 총점 기준으로 내림차순 정렬
         df_total = pd.merge(author_db, df_scores, left_on='author_cd', right_on='author_cd', how='inner')
     
         df_scores = df_total[["author_nm", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
@@ -489,6 +489,20 @@ with col2:
     
         # 7️⃣ 결과 출력
         st.dataframe(df_scores)
+
+
+        
+        file_path = "responses.csv"
+
+        # 📝 CSV 파일이 없으면 새로 생성
+        if not os.path.exists(file_path):
+            df = pd.DataFrame(columns=["이름", "의견"])  # 컬럼 생성
+            df.to_csv(file_path, index=False)
+
+        new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
+        
+        # 📥 기존 CSV에 데이터 추가 (append)
+        new_data.to_csv(file_path, mode='a', header=False, index=False)
 
 
 
