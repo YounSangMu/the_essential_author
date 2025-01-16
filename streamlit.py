@@ -489,22 +489,6 @@ if st.button('제출', type='primary') :
     st.dataframe(df_scores)
 
 
-    
-    file_path = "responses.csv"
-
-    # 📝 CSV 파일이 없으면 새로 생성
-    if not os.path.exists(file_path):
-        df = pd.DataFrame(columns=["이름", "의견"])  # 컬럼 생성
-        df.to_csv(file_path, index=False)
-
-    new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
-    
-    # 📥 기존 CSV에 데이터 추가 (append)
-    new_data.to_csv(file_path, mode='a', header=False, index=False)
-
-
-
-
 
 
 
