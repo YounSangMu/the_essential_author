@@ -6,6 +6,7 @@
 import pandas as pd 
 import streamlit as st 
 from PIL import Image
+import os
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
