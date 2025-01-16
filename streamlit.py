@@ -28,9 +28,9 @@ for index, row in author_db.iterrows() :
 
 
 #1. 디 에센셜 소개
-st.header("디 에센셜 작가 테스트")
+st.header("디 에센셜 작가 테스트📚")
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
-st.markdown(f"한 명의 작가에게 한동안 빠진다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것 같다는 생각이 들어요.<br>핵심 작품을 엮은 한 권의 책으로, 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 대화하는 시간 가지길 바랍니다.", unsafe_allow_html=True)
+st.markdown(f"한 명의 작가에게 한동안 빠진다는 건 잠시 인생을 함께 걸을 동행을 만나는 것 같다는 생각이 들어요.<br>핵심 작품을 엮은 한 권의 책으로, 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 대화하는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
 img = Image.open('image/main_image.png')
 st.image(img, width=300, caption='Image from Unsplash', use_container_width=True)
@@ -44,7 +44,7 @@ st.divider()
 
 #3. 테스트 시작 
 st.markdown('### 테스트 시작!')
-st.markdown("#### 1.기본 선호 ✔")
+st.markdown("#### 1.기본 선호 ✅")
 
 #3-1. 1번 문항 : 분량
 options_basic_1 = {
