@@ -37,7 +37,7 @@ st.image(img, width=300, caption='Image from Unsplash', use_container_width=True
 
 
 #2. 서비스 & 취지 소개 
-st.markdown("####테스트 제대로 활용하는 방법")
+st.markdown("#### 테스트 제대로 활용하는 방법")
 st.markdown("나와 비슷한 취향의 작가를 만나는 것도 물론 좋지만, 내가 배우고 싶은 사람 또는 나와 반대되는 사람을 떠올리며 선택해 보세요. 더 많은 작가를 만날 수 있을 겁니다.") 
 
 st.divider()
@@ -88,6 +88,7 @@ basic_3 = st.radio(
 
 st.divider()
 st.markdown("#### 2.성향 테스트")
+st.markdown('')
 
 #4-1. 4번 문항 : 성향 
 options_tendency_1 = {
@@ -197,6 +198,7 @@ for mbti, author in options_tendency_7.items() :
 
 st.divider()
 st.markdown("#### 3.연애 테스트")
+st.markdown('')
 
 #5-1. 10번 문항 : 시뮬레이션 
 options_simulation_1 = {
