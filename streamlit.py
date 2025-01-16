@@ -198,7 +198,7 @@ for mbti, author in options_tendency_7.items() :
 
 
 st.divider()
-st.markdown("#### 3.연애 테스트 💗")
+st.markdown("#### 3.연애 시뮬레이션 💗")
 st.markdown('')
 
 #5-1. 10번 문항 : 시뮬레이션 
