@@ -65,7 +65,7 @@ options_basic_1 = {
 
 st.write('Q1-1. 감당할 수 있는 분량은 어느정도 인가요?')
 basic_1 = st.radio(
-'Q1-1. 감당할 수 있는 분량은 어느정도 인가요?', list(options_basic_1.keys()),
+'', list(options_basic_1.keys()),
 captions = ['당신은 진정한 낭만 독서가', '그날의 내가 책임지겠죠', '나는 나를 믿지 않아', '요즘 너무 바빠요..']
 )
 #st.write(f"선택한 값: {options_basic_1[basic_1]}")
