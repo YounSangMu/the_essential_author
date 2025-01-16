@@ -60,7 +60,7 @@ captions = ['당신은 진정한 낭만 독서가', '그날의 내가 책임지�
 )
 #st.write(f"선택한 값: {options_basic_1[basic_1]}")
 
-st.markdown('\n')
+st.markdown('')
 
 #3-2. 2번 문항 : 국내/외
 options_basic_2 = {
@@ -74,7 +74,7 @@ basic_2 = st.radio(
 captions = ['', '한국도 이제 노벨문학상 보유국', '문화 교류가 중요하죠']
 )
 
-st.markdown('\n')
+st.markdown('')
 
 #3-3. 3번 문항 : 시 선호 여부 
 options_basic_3 = {
@@ -86,7 +86,7 @@ basic_3 = st.radio(
 'Q1-3. 시와 에세이로 이뤄진 책도 괜찮나요?', list(options_basic_3.keys())
 )
 
-st.markdown('\n')
+st.divider()
 st.markdown("#### 2.성향 테스트")
 
 #4-1. 4번 문항 : 성향 
@@ -101,7 +101,7 @@ tendency_1 = st.radio(
 'Q2-1. 당신이 소설을 읽을 때 가장 중요하게 생각하는 것은?', list(options_tendency_1.keys())
 )
 
-st.markdown('\n')
+st.markdown('')
 
 #4-4. 7번 문항 : 성향 
 options_tendency_2 = {
@@ -195,7 +195,7 @@ for mbti, author in options_tendency_7.items() :
     st.checkbox(f"{mbti}", key=f"{mbti}")
 
 
-st.markdown('\n')
+st.divider()
 st.markdown("#### 3.연애 테스트")
 
 #5-1. 10번 문항 : 시뮬레이션 
@@ -256,8 +256,7 @@ st.markdown("Q3-3. 연인과 갈등이 생겼을 때, 원하는 연인의 행동
 for value, author in options_simulation_3.items() : 
     st.checkbox(f"{value}", key=f"simulation_{author}_3")
 
-st.markdown('\n')
-
+st.divider()
 st.markdown("#### 4.명문장 픽")
 st.markdown('\n')
 
