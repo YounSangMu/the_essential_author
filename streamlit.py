@@ -30,7 +30,7 @@ for index, row in author_db.iterrows() :
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
-st.markdown(f"좋아하는 작가에게 빠져든다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것만 같아요.<br>핵심 작품을 엮은 한 권의 책으로, 누구보다 인생을 섬세하게 느끼고, 치열하게 고민했던 작가와 대화하는 시간 가지길 바랍니다.", unsafe_allow_html=True)
+st.markdown(f"좋아하는 작가에게 빠진다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것만 같아요.<br>핵심 작품을 엮은 한 권의 책으로, 누구보다 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 대화하는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
 img = Image.open('image/main_image.png')
 st.image(img, width=300, caption='Image from Unsplash', use_container_width=True)
@@ -38,7 +38,7 @@ st.image(img, width=300, caption='Image from Unsplash', use_container_width=True
 
 #2. 서비스 & 취지 소개 
 st.markdown("####테스트 제대로 활용하는 방법")
-st.markdown("나와 비슷한 취향의 작가를 만나는 것도 물론 좋지만, 내가 배우고 싶은 사람 또는 나와 반대되는 사람을 떠올리며 선택해 보세요. 더 많은 작가를 만나는 데에 도움이 될 겁니다.") 
+st.markdown("나와 비슷한 취향의 작가를 만나는 것도 물론 좋지만, 내가 배우고 싶은 사람 또는 나와 반대되는 사람을 떠올리며 선택해 보세요. 더 많은 작가를 만날 수 있을 겁니다.") 
 
 st.divider()
 
@@ -87,7 +87,7 @@ basic_3 = st.radio(
 )
 
 st.markdown('\n')
-st.markdown("####2.성향 테스트")
+st.markdown("#### 2.성향 테스트")
 
 #4-1. 4번 문항 : 성향 
 options_tendency_1 = {
@@ -196,7 +196,7 @@ for mbti, author in options_tendency_7.items() :
 
 
 st.markdown('\n')
-st.markdown("####3.연애 테스트")
+st.markdown("#### 3.연애 테스트")
 
 #5-1. 10번 문항 : 시뮬레이션 
 options_simulation_1 = {
@@ -258,7 +258,7 @@ for value, author in options_simulation_3.items() :
 
 st.markdown('\n')
 
-st.markdown("####4.명문장 픽")
+st.markdown("#### 4.명문장 픽")
 st.markdown('\n')
 
 #6-1. 16번 문항 : 명문장 픽
