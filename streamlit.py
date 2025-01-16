@@ -38,7 +38,7 @@ st.image(img, width=300, caption='Image from Unsplash', use_container_width=True
 
 
 #2. 서비스 & 취지 소개 
-st.markdown("#### 테스트 제대로 활용하는 법")
+st.markdown("#### 테스트 제대로 활용하는 법 ❗")
 st.markdown("나와 비슷한 취향의 작가를 만나는 것도 물론 좋지만, 내가 **배우고 싶은 사람** 또는 나와 **반대되는 사람**도 한번 떠올려보세요. 더 많은 작가를 만날 수 있을 겁니다.") 
 
 st.divider()
