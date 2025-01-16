@@ -270,240 +270,237 @@ for emblem, author_cd in author_emblem_dict_1.items() :
     author = f'{author_cd}_4'
     st.checkbox(f"{emblem}", key=author)
 
-col1, col2 = st.columns([9, 1])
 
-with col2:
-    if st.button('제출', type='primary') : 
-        
-    #    for i in (1, 10) : 
-    #        options_tendency_{i}[tendency_{i}]
-    #    st.write(options_tendency_1[tendency_1])
-    #    selected_mbti = [options_tendency_9[mbti] for mbti in tendency_1.keys() if st.session_state.get(mbti)]
-        
-        basic_check = []
-        basic_total_dict = {
-            basic_1 : options_basic_1, 
-            basic_2 : options_basic_2,
-            basic_3 : options_basic_3
-        }
+if st.button('제출', type='primary') : 
+#    for i in (1, 10) : 
+#        options_tendency_{i}[tendency_{i}]
+#    st.write(options_tendency_1[tendency_1])
+#    selected_mbti = [options_tendency_9[mbti] for mbti in tendency_1.keys() if st.session_state.get(mbti)]
     
-        for i, v in basic_total_dict.items() : 
-            basic_check.append(v[i])
-        # st.write(basic_check)
+    basic_check = []
+    basic_total_dict = {
+        basic_1 : options_basic_1, 
+        basic_2 : options_basic_2,
+        basic_3 : options_basic_3
+    }
+
+    for i, v in basic_total_dict.items() : 
+        basic_check.append(v[i])
+    # st.write(basic_check)
+
     
-        
-        tendency_check = []
-        tendency_total_dict = {
-            tendency_1 : options_tendency_1,
-            tendency_2 : options_tendency_2,
-            tendency_3 : options_tendency_3,
-            tendency_4 : options_tendency_4,
-            tendency_5 : options_tendency_5,
-            tendency_6 : options_tendency_6,
-        }
-    
-        for i, v in tendency_total_dict.items() : 
-            tendency_check.append(v[i])
-        # st.write(tendency_check)
-    
-    
-        mbti_check = []
-        selected_mbti = [options_tendency_7[mbti] for mbti in options_tendency_7.keys() if st.session_state.get(mbti)]
-    
-        # 선택 결과 출력
-        if selected_mbti:
-            for mbti in selected_mbti :
-                mbti_check.append(mbti)
-        # st.write(mbti_check)
-    
-        simulation_check = []
-        # selected_simul_1 = [options_simulation_1[author] for author in options_simulation_1.keys() if st.session_state.get(author)]
-        # selected_simul_2 = [options_simulation_2[author] for author in options_simulation_2.keys() if st.session_state.get(author)]
-        # selected_simul_3 = [options_simulation_3[author] for author in options_simulation_3.keys() if st.session_state.get(author)]
-    
-        selected_options_1 = [
-            value for value, author in options_simulation_1.items()
-            if st.session_state.get(f"simulation_{author}_1")
-        ]
-    
-        selected_options_2 = [
-            value for value, author in options_simulation_2.items()
-            if st.session_state.get(f"simulation_{author}_2")
-        ]
-    
-        selected_options_3 = [
-            value for value, author in options_simulation_3.items()
-            if st.session_state.get(f"simulation_{author}_3")
-        ]
-        
-        if selected_options_1:
-            for option in selected_options_1:
-                simulation_check.append(options_simulation_1[option])
-        
-        if selected_options_2:
-            for option in selected_options_2:
-                simulation_check.append(options_simulation_2[option])    
-        
-        if selected_options_3:
-            for option in selected_options_3:
-                simulation_check.append(options_simulation_3[option])
-        
-        # st.write(simulation_check)
-            
-        emblem_check = []
-        
-        selected_emblem_1 = [
-            emblem for emblem, author_cd in author_emblem_dict_1.items()
-            if st.session_state.get(f"{author_cd}_4")
-        ]
-    
-        if selected_emblem_1:
-            for emblem in selected_emblem_1:
-                emblem_check.append(author_emblem_dict_1[emblem])
-        
-        # st.write(emblem_check)
-    
-        author_tendency_scores = {author: 0 for author in author_list}
-    
-        for item in tendency_check:
-            if item in author_list :
-                # 직접 작가 이름이 나오면 점수 추가
-                author_tendency_scores[item] += 10
-            elif item in group_to_authors:
-                # 그룹 키면 해당 작가들에게 점수 추가
-                for author in group_to_authors[item]:
-                    author_tendency_scores[author] += 10
-    
-        author_mbti_scores = {author: 0 for author in author_list}
-    
-        for item in mbti_check:
-            if item in author_list :
-                # 직접 작가 이름이 나오면 점수 추가
-                author_mbti_scores[item] += 10
-            elif item in group_to_authors:
-                # 그룹 키면 해당 작가들에게 점수 추가
-                for author in group_to_authors[item]:
-                    author_mbti_scores[author] += 10
-    
-        author_simulation_scores = {author: 0 for author in author_list}
-    
-        for item in simulation_check:
-            if item in author_list :
-                # 직접 작가 이름이 나오면 점수 추가
-                author_simulation_scores[item] += 10
-            elif item in group_to_authors:
-                # 그룹 키면 해당 작가들에게 점수 추가
-                for author in group_to_authors[item]:
-                    author_simulation_scores[author] += 10
-    
-    
-        author_emblem_scores = {author: 0 for author in author_list}
-    
-        for item in emblem_check:
-            if item in author_list :
-                # 직접 작가 이름이 나오면 점수 추가
-                author_emblem_scores[item] += 10
-            elif item in group_to_authors:
-                # 그룹 키면 해당 작가들에게 점수 추가
-                for author in group_to_authors[item]:
-                    author_emblem_scores[author] += 10
-    
-    
-        df_scores = pd.DataFrame({
-            "author_cd": author_list,
-            "성향점수": [author_tendency_scores[author] for author in author_list],
-            "MBTI점수": [author_mbti_scores[author] for author in author_list],
-            "연애점수": [author_simulation_scores[author] for author in author_list], 
-            "명문장점수": [author_emblem_scores[author] for author in author_list] 
-        })
-    
-        # 총점 컬럼 추가
-        df_scores["총점"] = df_scores["성향점수"] + df_scores["MBTI점수"] + df_scores["연애점수"] + df_scores["명문장점수"]
-    
-        # 컬럼 순서 변경 (총점을 Author 옆으로 이동)
-        df_scores = df_scores[["author_cd", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
-    
-        # 총점 기준으로 내림차순 정렬
-        df_total = pd.merge(author_db, df_scores, left_on='author_cd', right_on='author_cd', how='inner')
-    
-        df_scores = df_total[["author_nm", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
-        df_scores.rename(columns={'author_nm': '작가', '명문장점수': '명문장 점수'}, inplace=True)
-    
-        df_scores = df_scores.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
-    
-        real_df_total = df_total
-    
-        if basic_check[0] == "500" : 
-            real_df_total = real_df_total[real_df_total["page"] <= 500]
-        elif basic_check[0] == "400" : 
-            real_df_total = real_df_total[real_df_total["page"] <= 400]
-        elif basic_check[0] == "300" : 
-            real_df_total = real_df_total[(real_df_total["page"] <= 300) | (real_df_total["author_nm"]=='한강')]
-    
-        if basic_check[1] == 0 :
-            real_df_total = real_df_total[real_df_total["foreign_yn"] == 0]
-        elif basic_check[1] == 1 :
-            real_df_total = real_df_total[real_df_total["foreign_yn"] == 1]
-    
-        if basic_check[2] == 1 :
-            real_df_total = real_df_total[real_df_total["author_cd"] != 'KSY']
-    
-        real_df_total = real_df_total.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
-        target_author = real_df_total.head(1)
-    
-        st.header(f"{target_author['author_nm'].iloc[0]} 🎉")
-        
-        img = Image.open(f"image/{target_author['author_cd'].iloc[0]}.png")
-        st.image(img, width=200, caption=f'{target_author['lifetime'].iloc[0]}, {target_author['country'].iloc[0]}')
-        st.markdown(f"[디 에센셜 설명 페이지 연결🔗](https://event.kyobobook.co.kr/desntl/detail/{target_author['book_seq'].iloc[0]})")
-    
-        
-        st.markdown(f"**1) 작가 소개** : ")
-        st.markdown(f"<small>{target_author['explain_1'].iloc[0]} <br> {target_author['explain_2'].iloc[0]} </small>", unsafe_allow_html=True)
-        st.markdown(f"**2) 페이지 수** : {target_author['page'].iloc[0]} \n")
-        st.markdown(f"**3) 수록 작품 📚** : {target_author['masterpiece_1'].iloc[0]}, {target_author['masterpiece_2'].iloc[0]}, {target_author['masterpiece_3'].iloc[0]} \n")
-        st.markdown(f"""
-        **4) 명문장 ✍🏻** :  
-        <small>
-            1. {target_author['prestigious emblem_1'].iloc[0]} <br>
-            2. {target_author['prestigious emblem_2'].iloc[0]} <br>
-            3. {target_author['prestigious emblem_3'].iloc[0]} <br>
-            4. {target_author['prestigious emblem_4'].iloc[0]} <br>
-            5. {target_author['prestigious emblem_5'].iloc[0]} <br>
-        </small>
-        """, unsafe_allow_html=True)
-    
-    
-        basic_answer_list = []
-        if basic_1 in ["500p 이하", "400p 이하", "300p 이하"] :
-            basic_answer_list.append(f"✅ {basic_1}")
-        if basic_2 in ["한국", "해외"] : 
-            basic_answer_list.append(f"✅ {basic_2} 작가")
-        if basic_3 == "시는 어려워요" : 
-            basic_answer_list.append(f"✅ 시집 제외")
-    
-        basic_list_join = ", ".join(basic_answer_list)
-    
-        st.markdown(f"**5) 상세 점수 🎯** : <br> {basic_list_join} <br><small>많은 작가에 관심을 가지기 바라는 마음에 아래 점수는 필터링을 반영하지 않았습니다 😊</small>", unsafe_allow_html=True)
-        st.markdown('\n')
-    
-    
-        # dataframe 출력
-        st.dataframe(df_scores)
+    tendency_check = []
+    tendency_total_dict = {
+        tendency_1 : options_tendency_1,
+        tendency_2 : options_tendency_2,
+        tendency_3 : options_tendency_3,
+        tendency_4 : options_tendency_4,
+        tendency_5 : options_tendency_5,
+        tendency_6 : options_tendency_6,
+    }
+
+    for i, v in tendency_total_dict.items() : 
+        tendency_check.append(v[i])
+    # st.write(tendency_check)
 
 
-        
-        file_path = "responses.csv"
+    mbti_check = []
+    selected_mbti = [options_tendency_7[mbti] for mbti in options_tendency_7.keys() if st.session_state.get(mbti)]
 
-        # 📝 CSV 파일이 없으면 새로 생성
-        if not os.path.exists(file_path):
-            df = pd.DataFrame(columns=["이름", "의견"])  # 컬럼 생성
-            df.to_csv(file_path, index=False)
+    # 선택 결과 출력
+    if selected_mbti:
+        for mbti in selected_mbti :
+            mbti_check.append(mbti)
+    # st.write(mbti_check)
 
-        new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
+    simulation_check = []
+    # selected_simul_1 = [options_simulation_1[author] for author in options_simulation_1.keys() if st.session_state.get(author)]
+    # selected_simul_2 = [options_simulation_2[author] for author in options_simulation_2.keys() if st.session_state.get(author)]
+    # selected_simul_3 = [options_simulation_3[author] for author in options_simulation_3.keys() if st.session_state.get(author)]
+
+    selected_options_1 = [
+        value for value, author in options_simulation_1.items()
+        if st.session_state.get(f"simulation_{author}_1")
+    ]
+
+    selected_options_2 = [
+        value for value, author in options_simulation_2.items()
+        if st.session_state.get(f"simulation_{author}_2")
+    ]
+
+    selected_options_3 = [
+        value for value, author in options_simulation_3.items()
+        if st.session_state.get(f"simulation_{author}_3")
+    ]
+    
+    if selected_options_1:
+        for option in selected_options_1:
+            simulation_check.append(options_simulation_1[option])
+    
+    if selected_options_2:
+        for option in selected_options_2:
+            simulation_check.append(options_simulation_2[option])    
+    
+    if selected_options_3:
+        for option in selected_options_3:
+            simulation_check.append(options_simulation_3[option])
+    
+    # st.write(simulation_check)
         
-        # 📥 기존 CSV에 데이터 추가 (append)
-        new_data.to_csv(file_path, mode='a', header=False, index=False)
+    emblem_check = []
+    
+    selected_emblem_1 = [
+        emblem for emblem, author_cd in author_emblem_dict_1.items()
+        if st.session_state.get(f"{author_cd}_4")
+    ]
+
+    if selected_emblem_1:
+        for emblem in selected_emblem_1:
+            emblem_check.append(author_emblem_dict_1[emblem])
+    
+    # st.write(emblem_check)
+
+    author_tendency_scores = {author: 0 for author in author_list}
+
+    for item in tendency_check:
+        if item in author_list :
+            # 직접 작가 이름이 나오면 점수 추가
+            author_tendency_scores[item] += 10
+        elif item in group_to_authors:
+            # 그룹 키면 해당 작가들에게 점수 추가
+            for author in group_to_authors[item]:
+                author_tendency_scores[author] += 10
+
+    author_mbti_scores = {author: 0 for author in author_list}
+
+    for item in mbti_check:
+        if item in author_list :
+            # 직접 작가 이름이 나오면 점수 추가
+            author_mbti_scores[item] += 10
+        elif item in group_to_authors:
+            # 그룹 키면 해당 작가들에게 점수 추가
+            for author in group_to_authors[item]:
+                author_mbti_scores[author] += 10
+
+    author_simulation_scores = {author: 0 for author in author_list}
+
+    for item in simulation_check:
+        if item in author_list :
+            # 직접 작가 이름이 나오면 점수 추가
+            author_simulation_scores[item] += 10
+        elif item in group_to_authors:
+            # 그룹 키면 해당 작가들에게 점수 추가
+            for author in group_to_authors[item]:
+                author_simulation_scores[author] += 10
+
+
+    author_emblem_scores = {author: 0 for author in author_list}
+
+    for item in emblem_check:
+        if item in author_list :
+            # 직접 작가 이름이 나오면 점수 추가
+            author_emblem_scores[item] += 10
+        elif item in group_to_authors:
+            # 그룹 키면 해당 작가들에게 점수 추가
+            for author in group_to_authors[item]:
+                author_emblem_scores[author] += 10
+
+
+    df_scores = pd.DataFrame({
+        "author_cd": author_list,
+        "성향점수": [author_tendency_scores[author] for author in author_list],
+        "MBTI점수": [author_mbti_scores[author] for author in author_list],
+        "연애점수": [author_simulation_scores[author] for author in author_list], 
+        "명문장점수": [author_emblem_scores[author] for author in author_list] 
+    })
+
+    # 총점 컬럼 추가
+    df_scores["총점"] = df_scores["성향점수"] + df_scores["MBTI점수"] + df_scores["연애점수"] + df_scores["명문장점수"]
+
+    # 컬럼 순서 변경 (총점을 Author 옆으로 이동)
+    df_scores = df_scores[["author_cd", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
+
+    # 총점 기준으로 내림차순 정렬
+    df_total = pd.merge(author_db, df_scores, left_on='author_cd', right_on='author_cd', how='inner')
+
+    df_scores = df_total[["author_nm", "총점", "성향점수", "MBTI점수", "연애점수", "명문장점수"]]
+    df_scores.rename(columns={'author_nm': '작가', '명문장점수': '명문장 점수'}, inplace=True)
+
+    df_scores = df_scores.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
+
+    real_df_total = df_total
+
+    if basic_check[0] == "500" : 
+        real_df_total = real_df_total[real_df_total["page"] <= 500]
+    elif basic_check[0] == "400" : 
+        real_df_total = real_df_total[real_df_total["page"] <= 400]
+    elif basic_check[0] == "300" : 
+        real_df_total = real_df_total[(real_df_total["page"] <= 300) | (real_df_total["author_nm"]=='한강')]
+
+    if basic_check[1] == 0 :
+        real_df_total = real_df_total[real_df_total["foreign_yn"] == 0]
+    elif basic_check[1] == 1 :
+        real_df_total = real_df_total[real_df_total["foreign_yn"] == 1]
+
+    if basic_check[2] == 1 :
+        real_df_total = real_df_total[real_df_total["author_cd"] != 'KSY']
+
+    real_df_total = real_df_total.sort_values(by=["총점", "성향점수", "연애점수"], ascending=False)
+    target_author = real_df_total.head(1)
+
+    st.header(f"{target_author['author_nm'].iloc[0]} 🎉")
+    
+    img = Image.open(f"image/{target_author['author_cd'].iloc[0]}.png")
+    st.image(img, width=200, caption=f'{target_author['lifetime'].iloc[0]}, {target_author['country'].iloc[0]}')
+    st.markdown(f"[디 에센셜 설명 페이지 연결🔗](https://event.kyobobook.co.kr/desntl/detail/{target_author['book_seq'].iloc[0]})")
+
+    
+    st.markdown(f"**1) 작가 소개** : ")
+    st.markdown(f"<small>{target_author['explain_1'].iloc[0]} <br> {target_author['explain_2'].iloc[0]} </small>", unsafe_allow_html=True)
+    st.markdown(f"**2) 페이지 수** : {target_author['page'].iloc[0]} \n")
+    st.markdown(f"**3) 수록 작품 📚** : {target_author['masterpiece_1'].iloc[0]}, {target_author['masterpiece_2'].iloc[0]}, {target_author['masterpiece_3'].iloc[0]} \n")
+    st.markdown(f"""
+    **4) 명문장 ✍🏻** :  
+    <small>
+        1. {target_author['prestigious emblem_1'].iloc[0]} <br>
+        2. {target_author['prestigious emblem_2'].iloc[0]} <br>
+        3. {target_author['prestigious emblem_3'].iloc[0]} <br>
+        4. {target_author['prestigious emblem_4'].iloc[0]} <br>
+        5. {target_author['prestigious emblem_5'].iloc[0]} <br>
+    </small>
+    """, unsafe_allow_html=True)
+
+
+    basic_answer_list = []
+    if basic_1 in ["500p 이하", "400p 이하", "300p 이하"] :
+        basic_answer_list.append(f"✅ {basic_1}")
+    if basic_2 in ["한국", "해외"] : 
+        basic_answer_list.append(f"✅ {basic_2} 작가")
+    if basic_3 == "시는 어려워요" : 
+        basic_answer_list.append(f"✅ 시집 제외")
+
+    basic_list_join = ", ".join(basic_answer_list)
+
+    st.markdown(f"**5) 상세 점수 🎯** : <br> {basic_list_join} <br><small>많은 작가에 관심을 가지기 바라는 마음에 아래 점수는 필터링을 반영하지 않았습니다 😊</small>", unsafe_allow_html=True)
+    st.markdown('\n')
+
+
+    # dataframe 출력
+    st.dataframe(df_scores)
+
+
+    
+    file_path = "responses.csv"
+
+    # 📝 CSV 파일이 없으면 새로 생성
+    if not os.path.exists(file_path):
+        df = pd.DataFrame(columns=["이름", "의견"])  # 컬럼 생성
+        df.to_csv(file_path, index=False)
+
+    new_data = pd.DataFrame([[tendency_1, tendency_2]], columns=["1번", "2번"])
+    
+    # 📥 기존 CSV에 데이터 추가 (append)
+    new_data.to_csv(file_path, mode='a', header=False, index=False)
 
 
 
