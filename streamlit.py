@@ -63,7 +63,7 @@ options_basic_1 = {
     "300p 이하": "300"
 }
 
-st.write('Q1-1. 감당할 수 있는 분량은 어느정도 인가요?')
+st.markdown('Q1-1. 감당할 수 있는 분량은 어느정도 인가요?')
 basic_1 = st.radio(
 '', list(options_basic_1.keys()),
 captions = ['당신은 진정한 낭만 독서가', '그날의 내가 책임지겠죠', '나는 나를 믿지 않아', '요즘 너무 바빠요..']
