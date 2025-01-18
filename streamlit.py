@@ -51,6 +51,8 @@ author_emblem_dict_1 = {}
 for index, row in author_db.iterrows() :
     author_emblem_dict_1[row["prestigious emblem_1"]] = row["author_cd"]
 
+iframe_url = "https://younsangmu.github.io/the_essential_author/google_analytics.html"
+components.iframe(iframe_url, height=0, width=0)
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
