@@ -27,8 +27,6 @@ def inject_google_analytics(tracking_id):
     """
     st.markdown(ga_script, unsafe_allow_html=True)
 
-inject_google_analytics("G-H24S7LJMLB")  
-
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
@@ -52,6 +50,7 @@ for index, row in author_db.iterrows() :
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
+inject_google_analytics("G-H24S7LJMLB")  
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
 st.markdown(f"한동안 한 명의 작가에게 빠진다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것 같다는 생각이 들어요.<br>핵심 작품을 엮은 한 권의 책으로, 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 만나는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
