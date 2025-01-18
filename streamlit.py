@@ -27,7 +27,7 @@ def inject_ga():
         gtag('config', 'G-H24S7LJMLB');
     </script>
     """
-    components.html(GA_JS, height=0)  # 안전하게 삽입
+    components.html(f"<head>{GA_JS}</head>", height=0) 
 
 inject_ga()
 
