@@ -7,6 +7,23 @@ import pandas as pd
 import streamlit as st 
 from PIL import Image
 import os
+import streamlit.components.v1 as components
+
+# Google Analytics 코드 삽입
+ga_code = """
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-H24S7LJMLB');
+</script>
+"""
+
+# HTML로 삽입
+components.html(ga_code)
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
