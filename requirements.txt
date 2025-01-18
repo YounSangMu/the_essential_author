@@ -1,3 +1,7 @@
 pandas
 streamlit 
 Pillow
+pathlib
+bs4
+logging
+shutil
