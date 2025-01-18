@@ -275,18 +275,6 @@ for emblem, author_cd in author_emblem_dict_1.items() :
     author = f'{author_cd}_4'
     st.checkbox(f"{emblem}", key=author)
     
-google_analytics_js = """
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-H24S7LJMLB');
-</script>
-"""
-
 
 if st.button('제출', type='primary') : 
     components.iframe(f"{iframe_url}?click=Streamlit_Button", height=0, width=0)
