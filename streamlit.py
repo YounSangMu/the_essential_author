@@ -27,7 +27,7 @@ components.html(ga_code)
 
 # HTML로 삽입 (iframe 비활성화)
 components.html(ga_code, height=0, scrolling=False)
-st.markdown(ga_code, unsafe_allow_html=True)
+
 
 
 #0. data summary
