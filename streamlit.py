@@ -14,19 +14,38 @@ import logging
 import shutil
 
 
-def inject_google_analytics(tracking_id):
-    ga_script = f"""
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id={tracking_id}"></script>
+def inject_ga():
+    GA_ID = "google_analytics"
+
+
+    GA_JS = """
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){{dataLayer.push(arguments);}}
-      gtag('js', new Date());
-      gtag('config', '{tracking_id}');
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-H24S7LJMLB');
     </script>
     """
-    components.html(ga_script, height=0)
 
+    # Insert the script in the head tag of the static template inside your virtual
+    index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
+    logging.info(f'editing {index_path}')
+    soup = BeautifulSoup(index_path.read_text(), features="html.parser")
+    if not soup.find(id=GA_ID): 
+        bck_index = index_path.with_suffix('.bck')
+        if bck_index.exists():
+            shutil.copy(bck_index, index_path)  
+        else:
+            shutil.copy(index_path, bck_index)  
+        html = str(soup)
+        new_html = html.replace('<head>', '<head>\n' + GA_JS)
+        index_path.write_text(new_html)
+
+
+inject_ga()
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
@@ -50,7 +69,6 @@ for index, row in author_db.iterrows() :
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
-inject_google_analytics("G-H24S7LJMLB")  
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
 st.markdown(f"한동안 한 명의 작가에게 빠진다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것 같다는 생각이 들어요.<br>핵심 작품을 엮은 한 권의 책으로, 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 만나는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
