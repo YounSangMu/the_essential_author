@@ -8,22 +8,45 @@ import streamlit as st
 from PIL import Image
 import os
 import streamlit.components.v1 as components
+import pathlib
+from bs4 import BeautifulSoup
+import logging
+import shutil
 
-# Google Analytics 코드 삽입
-ga_code = """
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
 
-  gtag('config', 'G-H24S7LJMLB');
-</script>
-"""
+def inject_ga():
+    GA_ID = "google_analytics"
 
-# HTML로 삽입
-components.html(ga_code, height=0, scrolling=False)
+
+    GA_JS = """
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-H24S7LJMLB');
+    </script>
+    """
+
+    # Insert the script in the head tag of the static template inside your virtual
+    index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
+    logging.info(f'editing {index_path}')
+    soup = BeautifulSoup(index_path.read_text(), features="html.parser")
+    if not soup.find(id=GA_ID): 
+        bck_index = index_path.with_suffix('.bck')
+        if bck_index.exists():
+            shutil.copy(bck_index, index_path)  
+        else:
+            shutil.copy(index_path, bck_index)  
+        html = str(soup)
+        new_html = html.replace('<head>', '<head>\n' + GA_JS)
+        index_path.write_text(new_html)
+
+
+inject_ga()
+
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
