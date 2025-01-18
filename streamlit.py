@@ -25,6 +25,9 @@ ga_code = """
 # HTML로 삽입
 components.html(ga_code)
 
+# HTML로 삽입 (iframe 비활성화)
+components.html(ga_code, height=0, scrolling=False)
+
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
 author_list = list(author_db["author_cd"])
