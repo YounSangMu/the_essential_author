@@ -16,20 +16,20 @@ import shutil
 import streamlit as st
 import streamlit.components.v1 as components
 
-def inject_ga():
-    GA_JS = """
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-H24S7LJMLB');
-    </script>
-    """
-    components.html(f"<head>{GA_JS}</head>", height=0) 
+# def inject_ga():
+#     GA_JS = """
+#     <!-- Global site tag (gtag.js) - Google Analytics -->
+#     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
+#     <script>
+#         window.dataLayer = window.dataLayer || [];
+#         function gtag(){dataLayer.push(arguments);}
+#         gtag('js', new Date());
+#         gtag('config', 'G-H24S7LJMLB');
+#     </script>
+#     """
+#     components.html(f"<head>{GA_JS}</head>", height=0) 
 
-inject_ga()
+# inject_ga()
 
 
 #0. data summary
