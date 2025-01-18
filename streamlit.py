@@ -25,7 +25,7 @@ def inject_google_analytics(tracking_id):
       gtag('config', '{tracking_id}');
     </script>
     """
-    st.markdown(ga_script, unsafe_allow_html=True)
+    components.html(ga_code, height=0)
 
 
 #0. data summary
