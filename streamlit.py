@@ -8,28 +8,7 @@ import streamlit as st
 from PIL import Image
 import os
 import streamlit.components.v1 as components
-import pathlib
-from bs4 import BeautifulSoup
-import logging
-import shutil
 
-import streamlit as st
-import streamlit.components.v1 as components
-
-# def inject_ga():
-#     GA_JS = """
-#     <!-- Global site tag (gtag.js) - Google Analytics -->
-#     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
-#     <script>
-#         window.dataLayer = window.dataLayer || [];
-#         function gtag(){dataLayer.push(arguments);}
-#         gtag('js', new Date());
-#         gtag('config', 'G-H24S7LJMLB');
-#     </script>
-#     """
-#     components.html(f"<head>{GA_JS}</head>", height=0) 
-
-# inject_ga()
 
 
 #0. data summary
@@ -310,6 +289,7 @@ google_analytics_js = """
 
 
 if st.button('제출', type='primary') : 
+    components.iframe(f"{iframe_url}?click=true", height=0, width=0)
 #    for i in (1, 10) : 
 #        options_tendency_{i}[tendency_{i}]
 #    st.write(options_tendency_1[tendency_1])
