@@ -14,6 +14,21 @@ import logging
 import shutil
 
 
+def inject_google_analytics(tracking_id):
+    ga_script = f"""
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={tracking_id}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+      gtag('config', '{tracking_id}');
+    </script>
+    """
+    st.markdown(ga_script, unsafe_allow_html=True)
+
+inject_google_analytics("G-H24S7LJMLB")  
+
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
