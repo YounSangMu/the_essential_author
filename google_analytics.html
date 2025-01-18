@@ -28,17 +28,14 @@
 <body>
   <h3>GA 통합 트래커 실행 중...</h3>
 
-  <!-- 숨겨진 버튼 (Streamlit에서 trigger) -->
-  <button id="hiddenButton" onclick="trackButtonClick('Streamlit Button')" style="display:none;">
-    숨겨진 버튼
-  </button>
-
   <script>
-    // URL 파라미터 확인 → 버튼 클릭 자동 실행
+    // URL 파라미터 확인 → 직접 이벤트 전송
     const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('click') === 'true') {
-      console.log("자동 클릭 실행됨");  // 디버깅용 출력
-      document.getElementById('hiddenButton').click();
+    const eventParam = urlParams.get('click');
+
+    if (eventParam) {
+      console.log("자동 이벤트 발생:", eventParam);  // 디버깅용 출력
+      trackButtonClick(eventParam);  // 버튼 클릭 대신 직접 함수 호출
     }
   </script>
 </body>
