@@ -289,7 +289,7 @@ google_analytics_js = """
 
 
 if st.button('제출', type='primary') : 
-    components.iframe(f"{iframe_url}?click=true", height=0, width=0)
+    components.iframe(f"{iframe_url}?click=Streamlit_Button", height=0, width=0)
 #    for i in (1, 10) : 
 #        options_tendency_{i}[tendency_{i}]
 #    st.write(options_tendency_1[tendency_1])
