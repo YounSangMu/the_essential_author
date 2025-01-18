@@ -25,7 +25,7 @@ def inject_google_analytics(tracking_id):
       gtag('config', '{tracking_id}');
     </script>
     """
-    components.html(ga_code, height=0)
+    components.html(ga_script, height=0)
 
 
 #0. data summary
