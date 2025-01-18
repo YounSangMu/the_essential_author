@@ -14,21 +14,21 @@ import logging
 import shutil
 
 
-def inject_ga():
-    GA_ID = "google_analytics"
+# def inject_ga():
+#     GA_ID = "google_analytics"
 
 
-    GA_JS = """
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
+#     GA_JS = """
+#     <!-- Global site tag (gtag.js) - Google Analytics -->
+#     <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
+#     <script>
+#         window.dataLayer = window.dataLayer || [];
+#         function gtag(){dataLayer.push(arguments);}
+#         gtag('js', new Date());
 
-        gtag('config', 'G-H24S7LJMLB');
-    </script>
-    """
+#         gtag('config', 'G-H24S7LJMLB');
+#     </script>
+#     """
 
     # Insert the script in the head tag of the static template inside your virtual
     index_path = pathlib.Path(st.__file__).parent / "static" / "index.html"
@@ -45,7 +45,7 @@ def inject_ga():
         index_path.write_text(new_html)
 
 
-inject_ga()
+# inject_ga()
 
 #0. data summary
 author_db = pd.read_csv('author_db.csv')
