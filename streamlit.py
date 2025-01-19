@@ -33,11 +33,12 @@ for index, row in author_db.iterrows() :
 # iframe_url = "https://younsangmu.github.io/the_essential_author/google_analytics.html"
 # components.iframe(iframe_url, height=0, width=0)
 
-html_path = os.path.join(os.getcwd(), "google_analytics.html")
-with open(html_path, "r", encoding="utf-8") as file:
-    html_content = file.read()
+html_code = """
+<iframe src="https://younsangmu.github.io/the_essential_author/google_analytics.html" 
+        style="width:0; height:0; border:0; visibility:hidden;"></iframe>
+"""
+st.components.v1.html(html_code, height=0)
 
-st.components.v1.html(html_content, height=0)
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
