@@ -39,15 +39,15 @@ st.header("디 에센셜 작가 테스트📚")
 st.markdown('#### *"좋아하는 작가를 만난다는 것"*')
 st.markdown(f"한동안 한 명의 작가에게 빠진다는 건, 잠시 인생을 함께 걸을 동행을 만나는 것 같다는 생각이 들어요.<br>핵심 작품을 엮은 한 권의 책으로, 인생을 섬세하게 느끼고 치열하게 고민했던 작가와 만나는 시간 가지길 바랍니다.", unsafe_allow_html=True)
 
-
-html_code = """
-<iframe src="https://your-ga-enabled-webpage.com" 
-        style="width:0; height:0; border:0; visibility:hidden;"></iframe>
-"""
-
-st.components.v1.html(html_code, height=0)
 img = Image.open('image/main_image.png')
 st.image(img, width=300, use_container_width=True)
+
+
+html_code = """
+<iframe src="https://younsangmu.github.io/the_essential_author/google_analytics.html" 
+        style="width:0; height:0; border:0; visibility:hidden;"></iframe>
+"""
+st.components.v1.html(html_code, height=0)
 
 
 #2. 서비스 & 취지 소개 
