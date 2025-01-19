@@ -448,7 +448,7 @@ if st.button('제출', type='primary') :
     elif basic_check[0] == "400" : 
         real_df_total = real_df_total[real_df_total["page"] <= 400]
     elif basic_check[0] == "300" : 
-        real_df_total = real_df_total[(real_df_total["page"] <= 300) | (real_df_total["author_nm"]=='한강')]
+        real_df_total = real_df_total[real_df_total["page"] <= 300]
 
     if basic_check[1] == 0 :
         real_df_total = real_df_total[real_df_total["foreign_yn"] == 0]
