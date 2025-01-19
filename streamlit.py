@@ -30,8 +30,14 @@ author_emblem_dict_1 = {}
 for index, row in author_db.iterrows() :
     author_emblem_dict_1[row["prestigious emblem_1"]] = row["author_cd"]
 
-iframe_url = "https://younsangmu.github.io/the_essential_author/google_analytics.html"
-components.iframe(iframe_url, height=0, width=0)
+# iframe_url = "https://younsangmu.github.io/the_essential_author/google_analytics.html"
+# components.iframe(iframe_url, height=0, width=0)
+
+html_path = os.path.join(os.getcwd(), "google_analytics.html")
+with open(html_path, "r", encoding="utf-8") as file:
+    html_content = file.read()
+
+st.components.v1.html(html_content, height=0)
 
 #1. 디 에센셜 소개
 st.header("디 에센셜 작가 테스트📚")
@@ -277,7 +283,7 @@ for emblem, author_cd in author_emblem_dict_1.items() :
     
 
 if st.button('제출', type='primary') : 
-    components.iframe(f"{iframe_url}?click=trackButton", height=0, width=0)
+    components.iframe(f"{html_content}?click=trackButton", height=0, width=0)
 #    for i in (1, 10) : 
 #        options_tendency_{i}[tendency_{i}]
 #    st.write(options_tendency_1[tendency_1])
