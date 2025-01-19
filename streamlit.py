@@ -502,6 +502,12 @@ if st.button('제출', type='primary') :
     # dataframe 출력
     st.dataframe(df_scores)
 
+    button_click_html_code = """
+    <iframe src="https://your-ga-enabled-webpage.com?event=button_click" 
+            style="width:0; height:0; border:0; visibility:hidden;"></iframe>
+    """
+    st.components.v1.html(button_click_html_code, height=0)
+
 
 
 
