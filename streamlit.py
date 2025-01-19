@@ -34,9 +34,9 @@ for index, row in author_db.iterrows() :
 # components.iframe(iframe_url, height=0, width=0)
 
 html_code = """
-<iframe src="https://younsangmu.github.io/the_essential_author/google_analytics.html" 
-        style="width:0; height:0; border:0; visibility:hidden;"></iframe>
-"""
+<iframe src="younsangmu.github.io/the_essential_author/google_analytics.html" 
+        style="width:0; height:0; border:none; visibility:hidden;"></iframe>
+    """
 st.components.v1.html(html_code, height=0)
 
 
