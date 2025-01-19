@@ -503,7 +503,7 @@ if st.button('제출', type='primary') :
 
     #GA 이벤트 수집
     button_click_html_code = """
-    <iframe src="https://your-ga-enabled-webpage.com?event=button_click" 
+    <iframe src="https://younsangmu.github.io/the_essential_author/google_analytics.html?event=button_click" 
             style="width:0; height:0; border:0; visibility:hidden;"></iframe>
     """
     st.components.v1.html(button_click_html_code, height=0)
