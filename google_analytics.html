@@ -12,7 +12,9 @@
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-H24S7LJMLB');  // 여기에 본인의 GA4 측정 ID 입력
+    gtag('config', 'G-H24S7LJMLB', {
+      cookie_flags: 'SameSite=None;Secure'  // 쿠키 설정 추가
+    });
   </script>
 </head>
 <body>
