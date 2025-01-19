@@ -3,51 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>GA4 통합 트래커</title>
+  <title>GA4 이벤트 트래커</title>
 
   <!-- Google Analytics 4 스크립트 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-H24S7LJMLB"></script>
   <script>
-    // GA4 설정 및 초기화
+    // GA4 초기화
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-H24S7LJMLB', {
-      cookie_flags: 'SameSite=None;Secure'  // 쿠키 설정 추가
+      cookie_flags: 'SameSite=None;Secure'
     });
 
-    // URL에서 이벤트 파라미터 읽기
-    const urlParams = new URLSearchParams(window.location.search);
-    const eventName = urlParams.get('event');
+    // URL 쿼리 파라미터에서 이벤트 이름 추출
+    document.addEventListener("DOMContentLoaded", function() {
+      const urlParams = new URLSearchParams(window.location.search);
+      const eventName = urlParams.get('event'); // 예: ?event=button_click
 
-    // URL에 event 파라미터가 있으면 GA로 이벤트 전송
-    if (eventName) {
-      gtag('event', eventName, {
-        'event_category': 'interaction',
-        'event_label': 'Automated Event',
-        'value': 1
-      });
-      console.log(`URL 기반 GA 이벤트 전송: ${eventName}`);  // 디버깅 로그
-    }
+      if (eventName) {
+        gtag('event', eventName, {
+          'event_category': 'interaction',
+          'event_label': 'Triggered by URL Parameter',
+          'value': 1
+        });
+        console.log(`URL 기반 이벤트 트래킹: ${eventName}`);
+      } else {
+        console.log("URL에 이벤트 정보가 없습니다.");
+      }
+    });
   </script>
 </head>
 <body>
-  <h1>Google Analytics 4 트래커</h1>
-  <p>이 페이지는 GA4를 사용하여 페이지 방문 및 버튼 클릭 이벤트를 트래킹합니다.</p>
-
-  <!-- 버튼 클릭 이벤트 -->
-  <button id="trackButton">클릭 이벤트 트래킹</button>
-
-  <script>
-    // 버튼 클릭 이벤트 트래킹 함수
-    document.getElementById('trackButton').addEventListener('click', function() {
-      gtag('event', 'button_click', {
-        'event_category': 'interaction',
-        'event_label': 'Sample Button',
-        'value': 1
-      });
-      console.log("버튼 클릭 이벤트가 전송되었습니다.");  // 디버깅용 로그
-    });
-  </script>
+  <h1>Google Analytics 4 이벤트 트래커</h1>
+  <p>URL에서 이벤트를 읽어 GA4로 전송합니다.</p>
 </body>
 </html>
