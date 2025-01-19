@@ -15,6 +15,20 @@
     gtag('config', 'G-H24S7LJMLB', {
       cookie_flags: 'SameSite=None;Secure'  // 쿠키 설정 추가
     });
+
+    // URL에서 이벤트 파라미터 읽기
+    const urlParams = new URLSearchParams(window.location.search);
+    const eventName = urlParams.get('event');
+
+    // URL에 event 파라미터가 있으면 GA로 이벤트 전송
+    if (eventName) {
+      gtag('event', eventName, {
+        'event_category': 'interaction',
+        'event_label': 'Automated Event',
+        'value': 1
+      });
+      console.log(`URL 기반 GA 이벤트 전송: ${eventName}`);  // 디버깅 로그
+    }
   </script>
 </head>
 <body>
