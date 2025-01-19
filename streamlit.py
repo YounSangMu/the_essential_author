@@ -42,7 +42,7 @@ st.markdown(f"한동안 한 명의 작가에게 빠진다는 건, 잠시 인생�
 img = Image.open('image/main_image.png')
 st.image(img, width=300, use_container_width=True)
 
-
+#GA 페이지뷰 수집
 html_code = """
 <iframe src="https://younsangmu.github.io/the_essential_author/google_analytics.html" 
         style="width:0; height:0; border:0; visibility:hidden;"></iframe>
@@ -501,11 +501,12 @@ if st.button('제출', type='primary') :
     # dataframe 출력
     st.dataframe(df_scores)
 
-    # button_click_html_code = """
-    # <iframe src="https://your-ga-enabled-webpage.com?event=button_click" 
-    #         style="width:0; height:0; border:0; visibility:hidden;"></iframe>
-    # """
-    # st.components.v1.html(button_click_html_code, height=0)
+    #GA 이벤트 수집
+    button_click_html_code = """
+    <iframe src="https://your-ga-enabled-webpage.com?event=button_click" 
+            style="width:0; height:0; border:0; visibility:hidden;"></iframe>
+    """
+    st.components.v1.html(button_click_html_code, height=0)
 
 
 
