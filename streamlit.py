@@ -514,7 +514,6 @@ if st.button('제출', type='primary') :
 
 
 
-
 # #4-7. 10번 문항 : 성향 
 # options_tendency_7 = {
 #     "작은 변화에도 의미를 찾으며 적응한다.": "KYS",
